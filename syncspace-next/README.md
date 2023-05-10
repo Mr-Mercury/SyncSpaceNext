@@ -1,0 +1,1 @@
+Recreation of SyncSpace written in Next.js making use of the newly stable app directory. 
