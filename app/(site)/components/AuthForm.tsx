@@ -72,7 +72,7 @@ export default function AuthForm() {
                     className='space-y-6'
                     onSubmit={handleSubmit(onSubmit)}
                 >
-                    <Input />
+                    <Input label='Email'/>
                 </form>
             </div>
         </div>
