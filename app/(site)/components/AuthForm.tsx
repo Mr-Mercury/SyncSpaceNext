@@ -54,8 +54,11 @@ export default function AuthForm() {
         <div
             className="
                 mt-8
-                sm:mx-auto
-                sm:max-w-md
+                w-full
+                mx-auto
+                lg:w-1/2
+                sm:w-3/4
+                lg:max-w-screen-lg
             "
         >
             <div
@@ -72,7 +75,7 @@ export default function AuthForm() {
                     className='space-y-6'
                     onSubmit={handleSubmit(onSubmit)}
                 >
-                    <Input id='email' label='Email' register={register}/>
+                    <Input id='email' label='Email' register={register} errors={errors}/>
                 </form>
             </div>
         </div>
