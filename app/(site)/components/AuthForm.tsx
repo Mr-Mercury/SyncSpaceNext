@@ -79,10 +79,10 @@ export default function AuthForm() {
                     onSubmit={handleSubmit(onSubmit)}
                 >
                   {option === 'REGISTER' && (
-                    <Input id='name' label='Username' register={register} errors={errors}/>
+                    <Input id='name' label='Username' register={register} errors={errors} disabled={loading}/>
                   )}
-                    <Input id='email' label='Email Address' type="email" register={register} errors={errors}/>
-                    <Input id='password' label='Password' type="password" register={register} errors={errors}/>
+                    <Input id='email' label='Email Address' type="email" register={register} errors={errors} disabled={loading}/>
+                    <Input id='password' label='Password' type="password" register={register} errors={errors} disabled={loading}/>
                     <div>
                         <Button
                           disabled={loading}
