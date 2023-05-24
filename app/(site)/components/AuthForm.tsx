@@ -4,6 +4,7 @@ import { useCallback, useState } from "react";
 import { SubmitHandler, FieldValues, useForm } from "react-hook-form";
 // I don't know why vscode is erroring this out
 import Input from '@/app/components/inputs/Input';
+import Button from '@/app/components/Button';
 
 type Option = 'LOGIN' | 'REGISTER';
 
@@ -52,18 +53,18 @@ export default function AuthForm() {
 
     return (
         <div
-            className="
-                mt-8
-                w-full
-                mx-auto
-                lg:w-1/2
-                sm:w-3/4
-                lg:max-w-screen-lg
+          className="
+              mt-8
+              w-full
+              mx-auto
+              lg:w-1/2
+              sm:w-3/4
+              lg:max-w-screen-lg
             "
         >
             <div
-                className="
-                bg-zinc-800
+              className="
+               bg-zinc-800
                 px-4
                 py-8
                 shadow
@@ -75,7 +76,16 @@ export default function AuthForm() {
                     className='space-y-6'
                     onSubmit={handleSubmit(onSubmit)}
                 >
-                    <Input id='email' label='Email' register={register} errors={errors}/>
+                  {option === 'REGISTER' && (
+                    <Input id='name' label='Name' register={register} errors={errors}/>
+                  )}
+                    <Input id='email' label='Email Address' type="email" register={register} errors={errors}/>
+                    <Input id='password' label='Password' type="password" register={register} errors={errors}/>
+                    <div>
+                        <Button>
+                            {option === 'LOGIN' ? 'Sign in' : 'Register'}
+                        </Button>
+                    </div>
                 </form>
             </div>
         </div>
