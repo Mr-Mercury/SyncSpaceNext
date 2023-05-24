@@ -6,7 +6,7 @@ import { SubmitHandler, FieldValues, useForm } from "react-hook-form";
 import Input from '@/app/components/inputs/Input';
 import Button from '@/app/components/Button';
 import AuthSocialButton from "./AuthSocialButton";
-import { BsGithub } from 'react-icons/bs';
+import { BsGithub, BsGoogle } from 'react-icons/bs';
 
 type Option = 'LOGIN' | 'REGISTER';
 
@@ -113,7 +113,10 @@ export default function AuthForm() {
                     <div className="mt-6 flex gap-2">
                         <AuthSocialButton 
                           icon={BsGithub}
-                          onClick={() => socialAction('github')}/>
+                          onClick={() => socialAction('github')} />
+                        <AuthSocialButton 
+                          icon={BsGoogle}
+                          onClick={() => socialAction('google')} />
                     </div>
 
                 </div>

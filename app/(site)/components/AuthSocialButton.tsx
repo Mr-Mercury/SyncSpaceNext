@@ -15,6 +15,7 @@ const AuthSocialButton: React.FC<AuthSocialButtonProps> = ({icon: Icon, onClick}
             w-full
             justify-center
             rounded-md
+            text-slate-700
             bg-slate-200
             shadow-sm
             ring-1
@@ -22,7 +23,7 @@ const AuthSocialButton: React.FC<AuthSocialButtonProps> = ({icon: Icon, onClick}
             ring-slate-300
             hover:bg-slate-300
             focus:outline-offset-0' >
-
+              <Icon />
         </button>
     );
 }
