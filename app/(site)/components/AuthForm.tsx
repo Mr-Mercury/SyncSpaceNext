@@ -79,7 +79,7 @@ export default function AuthForm() {
                     onSubmit={handleSubmit(onSubmit)}
                 >
                   {option === 'REGISTER' && (
-                    <Input id='name' label='Name' register={register} errors={errors}/>
+                    <Input id='name' label='Username' register={register} errors={errors}/>
                   )}
                     <Input id='email' label='Email Address' type="email" register={register} errors={errors}/>
                     <Input id='password' label='Password' type="password" register={register} errors={errors}/>
@@ -111,6 +111,7 @@ export default function AuthForm() {
                     </div>
 
                     <div className="mt-6 flex gap-2">
+                            {/* TODO: Make these oauth buttons a little taller? */}
                         <AuthSocialButton 
                           icon={BsGithub}
                           onClick={() => socialAction('github')} />
@@ -118,7 +119,27 @@ export default function AuthForm() {
                           icon={BsGoogle}
                           onClick={() => socialAction('google')} />
                     </div>
+                </div>
 
+                <div className='
+                  flex
+                  gap-2
+                  justify-center
+                  text-sm
+                  mt-6
+                  px-2
+                  text-slate-50
+                  '>
+                    <div>
+                        {option === 'LOGIN' ? 'New to SyncSpace?' : 'Already have an Account?'}
+                    </div>
+                    <div
+                      onClick={toggleOption}
+                      className='underline cursor-pointer'
+                    >
+                        {option === 'LOGIN' ? 'Create an account' : 'Login'}
+
+                    </div>
                 </div>
             </div>
         </div>
