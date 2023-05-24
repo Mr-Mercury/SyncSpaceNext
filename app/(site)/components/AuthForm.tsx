@@ -6,6 +6,7 @@ import { SubmitHandler, FieldValues, useForm } from "react-hook-form";
 import Input from '@/app/components/inputs/Input';
 import Button from '@/app/components/Button';
 import AuthSocialButton from "./AuthSocialButton";
+import { BsGithub } from 'react-icons/bs';
 
 type Option = 'LOGIN' | 'REGISTER';
 
@@ -103,15 +104,18 @@ export default function AuthForm() {
                             <div className='w-full border-t border-gray-300' />
                         </div>
                         <div className='relative flex justify-center text-sm'>
-                            <span className='bg-slate-600 px-2 text-slate-50'>
+                            <span className='bg-zinc-800 px-2 text-slate-50'>
                                 Or login with
                             </span>
                         </div>
                     </div>
 
                     <div className="mt-6 flex gap-2">
-                        <AuthSocialButton />
+                        <AuthSocialButton 
+                          icon={BsGithub}
+                          onClick={() => socialAction('github')}/>
                     </div>
+
                 </div>
             </div>
         </div>
