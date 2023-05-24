@@ -59,7 +59,7 @@ export default function AuthForm() {
               mt-8
               w-full
               mx-auto
-              lg:w-1/2
+              lg:w-1/3
               sm:w-3/4
               lg:max-w-screen-lg
             "
