@@ -7,6 +7,7 @@ import Input from '@/app/components/inputs/Input';
 import Button from '@/app/components/Button';
 import AuthSocialButton from "./AuthSocialButton";
 import { BsGithub, BsGoogle } from 'react-icons/bs';
+import axios from 'axios';
 
 type Option = 'LOGIN' | 'REGISTER';
 
@@ -40,7 +41,7 @@ export default function AuthForm() {
         setLoading(true);
 
         if (option === 'REGISTER') {
-            // fetch register
+            axios.post('/api/register', data)
         }
         if (option === 'LOGIN') {
             // NextAuth signin.  
