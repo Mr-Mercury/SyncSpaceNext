@@ -60,3 +60,5 @@ export const authOptions: AuthOptions = {
 };
 
 const handler = NextAuth(authOptions);
+// Required due to new app folder
+export { handler as GET, handler as POST };
