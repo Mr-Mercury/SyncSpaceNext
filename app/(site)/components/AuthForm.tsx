@@ -2,12 +2,12 @@
 // Bad for server component testing due to high interactivity
 import { useCallback, useState } from "react";
 import { SubmitHandler, FieldValues, useForm } from "react-hook-form";
-// I don't know why vscode is erroring this out
 import Input from '@/app/components/inputs/Input';
 import Button from '@/app/components/Button';
 import AuthSocialButton from "./AuthSocialButton";
 import { BsGithub, BsGoogle } from 'react-icons/bs';
 import axios from 'axios';
+import { toast } from "react-hot-toast";
 
 type Option = 'LOGIN' | 'REGISTER';
 
@@ -42,6 +42,8 @@ export default function AuthForm() {
 
         if (option === 'REGISTER') {
             axios.post('/api/register', data)
+            .catch(() => toast.error('Registration error!'))
+            .finally(() => setLoading(false))
         }
         if (option === 'LOGIN') {
             // NextAuth signin.  
