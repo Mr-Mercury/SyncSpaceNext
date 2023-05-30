@@ -8,6 +8,7 @@ import AuthSocialButton from "./AuthSocialButton";
 import { BsGithub, BsGoogle } from 'react-icons/bs';
 import axios from 'axios';
 import { toast } from "react-hot-toast";
+import { signIn } from 'next-auth/react';
 
 type Option = 'LOGIN' | 'REGISTER';
 
@@ -46,14 +47,35 @@ export default function AuthForm() {
             .finally(() => setLoading(false))
         }
         if (option === 'LOGIN') {
-            // NextAuth signin.  
+            signIn('credentials', {...data, redirect:false})
+            .then((callback) => {
+
+                if (callback?.error) {
+                    toast.error('Invalid Credentials');
+                }
+
+                if (callback?.ok && !callback?.error) {
+                    toast.success('Logged in')
+                }
+            })
+            .finally(() => setLoading(false))
         }
+    }
 
-        function oAuthAction(action: string) {
-            setLoading(true);
+    function oAuthAction(action: string): void {
+        setLoading(true);
 
-            //nextAuth socials signin
-        } 
+        signIn(action, {redirect: false})
+        .then((callback) => {
+            if (callback?.error) {
+                toast.error('Invalid username and/or password')
+            }
+
+            if (callback?.ok && !callback?.error) {
+                toast.success('Logged in')
+            }
+        })
+        .finally(() => setLoading(false))
     }
 
     return (
@@ -117,10 +139,10 @@ export default function AuthForm() {
                             {/* TODO: Make these oauth buttons a little taller? */}
                         <AuthSocialButton 
                           icon={BsGithub}
-                          onClick={() => socialAction('github')} />
+                          onClick={() => oAuthAction('github')} />
                         <AuthSocialButton 
                           icon={BsGoogle}
-                          onClick={() => socialAction('google')} />
+                          onClick={() => oAuthAction('google')} />
                     </div>
                 </div>
 
