@@ -11,7 +11,17 @@ const EmptyState = () => {
             justify-center
             items-center
             bg-zinc-800'
-        >Empty</div>
+        >
+            <div className='text-center items-center flex flex-col'>
+                <h3 className='
+                      mt-2
+                      text-2xl
+                      font-semibold
+                      text-slate-50'>
+                    Select chat or new conversation
+                </h3>
+            </div>
+        </div>
     )
 }
 
