@@ -1,6 +1,6 @@
 import DesktopSidebar from "./DesktopSidebar"
 
-export default async function Sidebar({children}: React.ReactNode) {
+async function Sidebar({ children }: React.ReactNode) {
     return (
         <div className='h-full'>
             <DesktopSidebar />
@@ -10,3 +10,5 @@ export default async function Sidebar({children}: React.ReactNode) {
         </div>
     )
 }
+
+export default Sidebar;
