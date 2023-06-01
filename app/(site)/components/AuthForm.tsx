@@ -17,13 +17,13 @@ export default function AuthForm() {
     const [option, setOption] = useState<Option>('LOGIN'); 
     const [loading, setLoading] = useState(false);
     const session = useSession();
-    const router = useRouter;
+    const router = useRouter();
 
     useEffect(() => {
         if (session?.status === 'authenticated') {
-            console.log('Authenticated');
+            router.push('/users');
         }
-    }, [session?.status])
+    }, [session?.status, router])
 
     const toggleOption = useCallback(() => {
         if (option === 'LOGIN') {
@@ -52,6 +52,7 @@ export default function AuthForm() {
 
         if (option === 'REGISTER') {
             axios.post('/api/register', data)
+            .then(() => signIn('credentials', {...data, redirect: false}))
             .catch(() => toast.error('Registration error!'))
             .finally(() => setLoading(false))
         }
@@ -64,7 +65,8 @@ export default function AuthForm() {
                 }
 
                 if (callback?.ok && !callback?.error) {
-                    toast.success('Logged in')
+                    toast.success('Logged in');
+                    router.push('/users');
                 }
             })
             .finally(() => setLoading(false))
