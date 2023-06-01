@@ -1,0 +1,3 @@
+text colors: Slate-50 for white 
+Background colors: zinc-900 for darkest bg
+
